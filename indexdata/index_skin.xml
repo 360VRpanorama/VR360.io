@@ -1269,7 +1269,7 @@ if (device.desktop,
     zorder="3"
     align="topright"
     x="5" y="10"
-    width="200"
+    width="100"
     onloaded="panoramacomboboxLoaded();"
     isStarted="false"
     isLoaded="false"
@@ -1467,6 +1467,46 @@ if (device.desktop,
     );
   </action>
  <!-- ********** --> <!-- 360Images CoOL Hotspots Plugin --> <!-- CoOL Hotspots --> <!-- id : cool_hotspot --> <!-- ********** -->        <include url="%FIRSTXML%/graphics/coolhotspots.xml"/>   <style 	cooltype="bubble" 	name="Default Point Spot Style" 	type="container"  	width="25"  	height="25"  	bgalpha="0" 	bgcapture="true"   	accuracy="1" 	bubble_width="25"  	bubble_width_onover="75" 	alwayson="false" 	ttalign="top" 	ttedge="bottom" 	 	onover=" 	hidebbhs(); 	set(zorder,20); 	tween(width|height,get(bubble_width_onover)); 	tween(layer[get(mybubble)].width,get(bubble_width_onover)); 	tween(layer[get(mybubble)].height,get(bubble_width_onover)); 	tween(layer[get(mybubble_shadow)].width,get(bubble_width_onover)); 	tween(layer[get(mybubble_shadow)].height,get(bubble_width_onover)); 	tween(layer[get(mypreview)].alpha,1); 	set(layer[get(mypreview)].enabled,true); 	"     	onout=" 	set(zorder,2);  	tween(width|height,get(bubble_width)); 	tween(layer[get(mybubble)].width,get(bubble_width)); 	tween(layer[get(mybubble)].height,get(bubble_width)); 	tween(layer[get(mybubble_shadow)].width,get(bubble_width)); 	tween(layer[get(mybubble_shadow)].height,get(bubble_width)); 	ifnot(alwayson,tween(layer[get(mypreview)].alpha,0));  	set(layer[get(mypreview)].enabled,false);  	" 	 	onloaded=" 	txtadd(hotspot[get(name)].permanentTooltipForSpot, get(tooltip), '_permanent'); 	delayedcall(0.1, 	if(layer[get(permanentTooltipForSpot)].html, 		set(layer[get(permanentTooltipForSpot)].ox,0); 		set(layer[get(permanentTooltipForSpot)].oy,-10); 		); 	); 	 	txtadd(mybubble,'bubble',get(name)); 	addlayer(get(mybubble)); 	copy(hotspot[get(name)].mybubble,mybubble); 	layer[get(mybubble)].loadstyle(cool_hotspotbubblelayer); 	txtadd(mybubble_shadow,'bubble_shadow',get(name)); 	addlayer(get(mybubble_shadow)); 	copy(hotspot[get(name)].mybubble_shadow,mybubble_shadow); 	layer[get(mybubble_shadow)].loadstyle(cool_hotspotbubblelayer_shadow); 			 	txtadd(mypreview,'preview_',get(name)); 	addlayer(get(mypreview)); 	copy(hotspot[get(name)].mypreview,mypreview); 	 	 	if(linkedscene, 		set(layer[get(mypreview)].url,get(scene[get(linkedscene)].thumburl)); 	); 	if(linkedgroup, 		set(layer[get(mypreview)].url,get(panoramagroup[get(linkedgroup)].thumburl)); 	); 	if(photourl, 		set(layer[get(mypreview)].url,get(photourl)); 	); 	 	 	layer[get(mypreview)].loadstyle(cool_hotspotbubble_previewlayer); 	 	txtadd(parentlayer,'hotspot[',get(name),']'); 	copy(layer[get(mybubble)].parent,parentlayer); 	copy(layer[get(mybubble_shadow)].parent,parentlayer); 		 	txtadd(parentlayer2,'layer[',get(mybubble),']'); 	copy(layer[get(mypreview)].parent,parentlayer2); 		 	txtadd(clickaction,'callwith(hotspot[',get(name),'],onclick)'); 	copy(layer[get(mypreview)].onclick,clickaction);  	" /> <style  	name="cool_hotspotbubblelayer"  	type="container"  	width="25"  	height="25"  	bgalpha="0"  	bgborder="3 0xffffff 1.00"  	bgroundedge="75"   	bgcapture="true"  	maskchildren="true"  	accuracy="1" 	 	ondown.touch="callwith(get(parent),onover);delayedcall(0.6,callwith(get(parent),onclick));" 	  	align="center" 	 /> <style  	name="cool_hotspotbubblelayer_shadow"  	type="container"  	width="25"  	height="25"  	bgalpha="0"  	bgborder="0 0xffffff 0"  	bgroundedge="75"   	bgcapture="false"  	accuracy="1"  	align="center" 	 		bgshadow="5 5 10 0 0x000000 0.5 inset" 	 /> <style  	name="cool_hotspotbubble_previewlayer"  	align="center" 	accuracy="1" 	width="prop"  	height="75"  	enabled="false" 	onloaded="if(pixelheight GT pixelwidth,copy(width,height);set(height,prop));set(alpha,0)" />       
+<action name="viewControlZoomIn">
+	if(%1,
+		if(%2,
+			if(%2 LT view.fovmin,
+				zoomto(get(view.fovmin));
+			,
+				if(%2 LT view.fov,
+					zoomto(%2);
+				);
+			);
+		,
+			set(fov_moveforce, -1);
+			delayedcall(0.1, viewControlZoomStop());
+		);
+	,
+		set(fov_moveforce, -1);
+	);
+</action>
+<action name="viewControlZoomOut">
+	if(%1,
+		if(%2,
+			if(%2 GT view.fovmax,
+				zoomto(get(view.fovmax));
+			,
+				if(%2 GT view.fov,
+					zoomto(%2);
+				);
+			);
+		,
+			set(fov_moveforce, +1);
+			delayedcall(0.1, viewControlZoomStop());
+		);
+	,
+		set(fov_moveforce, +1);
+	);
+</action>
+<action name="viewControlZoomStop">
+	set(fov_moveforce, 0);
+</action>
+
 <action name="viewControlMoveUp">
 	if(%1,
 		if(%2,
@@ -1567,6 +1607,23 @@ if (device.desktop,
 	set(vlookat_moveforce, 0);
 </action>
 
+  <!-- Fullscreen Management -->
+  <action name="exitFullScreen" devices="fullscreensupport">set(tour_fullscreen,false);set(fullscreen,false);</action>
+  <action name="enterFullScreen" devices="fullscreensupport">set(tour_fullscreen,true);set(fullscreen,true);</action>
+  <action name="switchFullScreen">if(tour_fullscreen,exitFullScreen();,enterFullScreen(););</action>
+
+  
+  <events name="krpanoExitFullscreenEvent"
+    onexitfullscreen="if(tour_fullscreen,exitFullScreenChangeEvent(););"
+    keep="true" />
+
+  <action name="exitFullScreenChangeEvent" devices="fullscreensupport">set(tour_fullscreen,false);events.dispatch(onexitfullscreen);</action>
+
+  <!-- Hide / Show Controls -->
+  <action name="hideTourControls">set(tour_displaycontrols, false);events.dispatch(hidetourcontrols);</action>
+  <action name="showTourControls">set(tour_displaycontrols, true); events.dispatch(showtourcontrols);</action>
+
+
   <action name="enableGyroscope">
     changeGyroscopeState(true);
   </action>
@@ -1602,61 +1659,4 @@ if (device.desktop,
 		set(tour_vrdevices, false);
 		events.dispatch(onvrunavailable);
 	</action>
-  <!-- Fullscreen Management -->
-  <action name="exitFullScreen" devices="fullscreensupport">set(tour_fullscreen,false);set(fullscreen,false);</action>
-  <action name="enterFullScreen" devices="fullscreensupport">set(tour_fullscreen,true);set(fullscreen,true);</action>
-  <action name="switchFullScreen">if(tour_fullscreen,exitFullScreen();,enterFullScreen(););</action>
-
-  
-  <events name="krpanoExitFullscreenEvent"
-    onexitfullscreen="if(tour_fullscreen,exitFullScreenChangeEvent(););"
-    keep="true" />
-
-  <action name="exitFullScreenChangeEvent" devices="fullscreensupport">set(tour_fullscreen,false);events.dispatch(onexitfullscreen);</action>
-
-  <!-- Hide / Show Controls -->
-  <action name="hideTourControls">set(tour_displaycontrols, false);events.dispatch(hidetourcontrols);</action>
-  <action name="showTourControls">set(tour_displaycontrols, true); events.dispatch(showtourcontrols);</action>
-
-
-<action name="viewControlZoomIn">
-	if(%1,
-		if(%2,
-			if(%2 LT view.fovmin,
-				zoomto(get(view.fovmin));
-			,
-				if(%2 LT view.fov,
-					zoomto(%2);
-				);
-			);
-		,
-			set(fov_moveforce, -1);
-			delayedcall(0.1, viewControlZoomStop());
-		);
-	,
-		set(fov_moveforce, -1);
-	);
-</action>
-<action name="viewControlZoomOut">
-	if(%1,
-		if(%2,
-			if(%2 GT view.fovmax,
-				zoomto(get(view.fovmax));
-			,
-				if(%2 GT view.fov,
-					zoomto(%2);
-				);
-			);
-		,
-			set(fov_moveforce, +1);
-			delayedcall(0.1, viewControlZoomStop());
-		);
-	,
-		set(fov_moveforce, +1);
-	);
-</action>
-<action name="viewControlZoomStop">
-	set(fov_moveforce, 0);
-</action>
-
 </krpano>
