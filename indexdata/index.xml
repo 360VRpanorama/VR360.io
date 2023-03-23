@@ -59,7 +59,7 @@
     ,
       if (v !== null,
         if (f !== null,
-          lookat(get(view.hlookat), get(v), get(f));
+          lookat(get(.hlookat), get(v), get(f));
          ,
           lookat(get(view.hlookat), get(v));
         );
@@ -75,7 +75,7 @@
 
   <!-- Group Group 92 : 1 panoramas -->
   
-<!-- **** @PanoName="View01" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/360/C00.jpg" **** -->
+<!-- **** @PanoName="Street View" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/360/C00.jpg" **** -->
 <!-- **** Width="5000px" Height="2500px" **** -->
 <scene name="pano91"
        heading="0"
@@ -211,7 +211,7 @@
 
   <!-- Group Group 322 : 1 panoramas -->
   
-<!-- **** @PanoName="View02" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/360/C01.jpg" **** -->
+<!-- **** @PanoName="Commercial Plaza" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/360/C01.jpg" **** -->
 <!-- **** Width="5000px" Height="2500px" **** -->
 <scene name="pano321"
        heading="0"
@@ -321,7 +321,7 @@
 
   <!-- Group Group 94 : 1 panoramas -->
   
-<!-- **** @PanoName="View03" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/360/C02.jpg" **** -->
+<!-- **** @PanoName="Entry Gate" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/360/C02.jpg" **** -->
 <!-- **** Width="5000px" Height="2500px" **** -->
 <scene name="pano93"
        heading="0"
@@ -457,7 +457,7 @@
 
   <!-- Group Group 99 : 1 panoramas -->
   
-<!-- **** @PanoName="View04" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/New folder/C03.jpg" **** -->
+<!-- **** @PanoName="Entry Plaza" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/New folder/C03.jpg" **** -->
 <!-- **** Width="5000px" Height="2500px" **** -->
 <scene name="pano97"
        heading="0"
@@ -593,7 +593,7 @@
 
   <!-- Group Group 90 : 1 panoramas -->
   
-<!-- **** @PanoName="View05" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/New folder/C04.jpg" **** -->
+<!-- **** @PanoName="Podium Central Park" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/New folder/C04.jpg" **** -->
 <!-- **** Width="5000px" Height="2500px" **** -->
 <scene name="pano89"
        heading="0"
@@ -729,7 +729,7 @@
 
   <!-- Group Group 102 : 1 panoramas -->
   
-<!-- **** @PanoName="View06" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/360/C05.jpg" **** -->
+<!-- **** @PanoName="Basketball/PlayZone" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/360/C05.jpg" **** -->
 <!-- **** Width="5000px" Height="2500px" **** -->
 <scene name="pano101"
        heading="0"
@@ -865,7 +865,7 @@
 
   <!-- Group Group 88 : 1 panoramas -->
   
-<!-- **** @PanoName="View07" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/New folder/C06.jpg" **** -->
+<!-- **** @PanoName="AmphiTheatre" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/New folder/C06.jpg" **** -->
 <!-- **** Width="5000px" Height="2500px" **** -->
 <scene name="pano87"
        heading="0"
@@ -1001,7 +1001,7 @@
 
   <!-- Group Group 202 : 1 panoramas -->
   
-<!-- **** @PanoName="View08" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/New folder/C07.jpg" **** -->
+<!-- **** @PanoName="Club" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/New folder/C07.jpg" **** -->
 <!-- **** Width="5000px" Height="2500px" **** -->
 <scene name="pano201"
        heading="0"
@@ -1137,7 +1137,7 @@
 
   <!-- Group Group 320 : 1 panoramas -->
   
-<!-- **** @PanoName="View09" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/New folder/C08.jpg" **** -->
+<!-- **** @PanoName="Badminton" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/New folder/C08.jpg" **** -->
 <!-- **** Width="5000px" Height="2500px" **** -->
 <scene name="pano319"
        heading="0"
@@ -1273,7 +1273,7 @@
 
   <!-- Group Group 527 : 1 panoramas -->
   
-<!-- **** @PanoName="View10" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/360/C09.jpg" **** -->
+<!-- **** @PanoName="Swimming Pool" @PanoFile="C:/Users/ankit/Desktop/MintInfotech/360/C09.jpg" **** -->
 <!-- **** Width="5000px" Height="2500px" **** -->
 <scene name="pano526"
        heading="0"
